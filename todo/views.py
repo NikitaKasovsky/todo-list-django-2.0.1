@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, render_to_response, get_object_or
 from django import forms # импорт django форм
 from django.template import RequestContext 
 from todo.forms import add_task_form, add_list_form, view_task, view_list # импорт форм представления
-from . import models 
+from todo import models 
 from todo.models import task, List
 # функция рендера основной страницы
 def home(request):

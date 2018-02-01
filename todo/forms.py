@@ -1,6 +1,6 @@
 from todo.models import task, List # импорт моделей
 from django import forms
-from . import views
+from todo import views
 
 class add_task_form(forms.ModelForm): # форма для создания задачи
 	class Meta():

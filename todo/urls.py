@@ -1,6 +1,6 @@
 from django.urls import path
 from django.conf.urls import url
-from . import views
+from todo import views
 from django import forms
 from django.http import HttpResponse
 
