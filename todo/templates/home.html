@@ -1,0 +1,36 @@
+{% load staticfiles %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//RU">
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+{% load bootstrap3 %}
+<script src="{% bootstrap_jquery_url %}"></script>
+{% bootstrap_javascript %}
+{% bootstrap_css %}
+        <title>TEST</title>
+    </head>
+    <body>
+        <div class="page-header">
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                    <p></p>
+                    <div class="container">
+                        <a href="tree_objects"> <button class="save btn btn-default" name="button_tree_objects"><span class="glyphicon glyphicon-align-justify"></span></button></a>
+                        <a href="new_task"><button class="save btn btn-default" name="button_post_task"><span class="glyphicon glyphicon-plus"></span></button></a>
+                        <a href="new_list"><button class="save btn btn-default" name="button_post_list"><span class="glyphicon glyphicon-th-large"></span></button></a>
+                    </div>
+                    <p></p>
+            </nav>
+    		<div class="jumbotron">
+                <div class="container">
+                    {% block tree_objects %} <!-- Наследование блока каскадного вывода объектов моделей -->
+                    {% endblock %} 
+                    {% block task_post %} <!-- Наследование блока создания задачи -->
+                    {% endblock %}
+                    {% block list_post %} <!-- Наследование блока создание листа (категории) -->
+                    {% endblock %}
+    	        </div>
+            </div>
+        </div>
+    </body>
+</html>

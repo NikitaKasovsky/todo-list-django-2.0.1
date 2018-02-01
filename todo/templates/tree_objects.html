@@ -1,0 +1,57 @@
+{% extends 'home.html' %} <!-- Наследование шаблона в основной template -->
+
+{% load staticfiles %}
+
+{% block tree_objects %}
+    <div id="gettask" class="container">
+	    <div class="row">
+	    {% for list in lists %}  <!-- Пробегаем по всем листам (категориям) -->
+	    	<div class="panel panel-primary">
+	            <ul class="list-group">
+	              	<div class="panel-body">
+	              		<li class="list-group-item">
+	              			<h3>
+	              				<div class="row">
+		              				<div class="col-xs-11"> 
+		              					<a href="{% url 'one_list' list.id %}">{{ list.list_title }}</a><!-- Вывод названия листа(категории) -->
+		              				</div>
+		              				<div class="col-xs-1">
+		              					<a href="{% url 'delete_list' list.id %}"><span class="glyphicon glyphicon-remove"></span></a>
+		              				</div>
+	              				</div>
+	              			</h3>
+	              		</li>
+	              	</div>
+	             		{% for task in tasks %}<!-- Пробегаем по всем задачам  -->
+				         	{% if task.lisst == list %} <!-- Условие выборки задач в листах -->
+					         	<div class="panel-footer">
+					         		<li class="list-group-item">
+					         			<div class="col-xs-10">
+						         			<a href="{% url 'one_task' task.id %}">
+							         			{{ task.title }} <!-- Вывод названия задачи -->
+							         		</a>
+						         		</div>
+						         		<div class="col-xs-1">
+						         			{% if task.is_done == True %} <!-- Условие для определения состояния задачи -->
+							         			<a href="{% url 'toggle_task' task.id %}">
+							         				<span class="glyphicon glyphicon-ok"></span>
+							         			</a>				       
+						         			{% else %}
+							         			<a href="{% url 'toggle_task' task.id %}">
+							         				<span class="glyphicon glyphicon-time"></span>
+							         			</a>
+						         			{% endif %}
+						         		</div>
+					         			<a href="{% url 'delete_task' task.id %}">
+					         				<span class="badge"><span class="glyphicon glyphicon-remove"></span></span>
+					         			</a>
+						       		</li>
+						       	</div>
+					       	{% endif %}		        	
+		        		{% endfor %}
+	            </ul>
+    		</div>
+	    {% endfor %} 
+	    </div>     
+    </div>
+{% endblock %}

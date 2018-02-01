@@ -1,0 +1,10 @@
+{% extends 'home.html' %} <!-- Наследования шаблона в основной template -->
+
+{% load staticfiles %}
+
+{% block task_post %}
+<form method="POST" class="post-form" >
+{{ form }}{% csrf_token %} <!-- -->
+<button type="submit"><span class=" glyphicon glyphicon-ok" ></span></button>
+</form>
+{% endblock %}

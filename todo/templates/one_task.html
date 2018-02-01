@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//RU">
+<html lang="ru">
+<head>
+{% load bootstrap3 %}
+<script src="{% bootstrap_jquery_url %}"></script>
+{% bootstrap_javascript %}
+{% bootstrap_css %}
+        <meta charset="utf-8">
+</head>
+<div class="jumbotron">
+	<div class="container">
+		<form method="POST" class="">
+			{{ form.as_p }} <!-- Подключение формы view_task -->
+			{% csrf_token %} 
+			<button type="submit" class="save btn btn-default"><span class="glyphicon glyphicon-floppy-saved" ></span></button>
+			<button type="submit" class="save btn btn-default"><a onclick="javascript:history.back(); return false;"></a>Назад</button>
+		</form>
+	</div>
+</div>
+</html>
+
